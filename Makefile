@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dfinn <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: dfinn <dfinn@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 13:43:33 by dfinn             #+#    #+#              #
-#    Updated: 2022/10/21 15:48:03 by dfinn            ###   ########.fr        #
+#    Updated: 2022/10/24 15:40:16 by dfinn            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS = ft_memset.c		\
 		ft_memcmp.c		\
 		ft_strlen.c		\
 		ft_isalpha.c 	\
+		ft_itoa.c       \
 		ft_isdigit.c		\
 		ft_isalnum.c		\
 		ft_isascii.c		\

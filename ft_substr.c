@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dfinn <dfinn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:25:29 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/21 14:06:52 by dfinn            ###   ########.fr       */
+/*   Updated: 2022/10/24 17:46:52 by dfinn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	size_t	substr_length;
+	char	*substr;
 
-	str = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!str)
-	{
+	if (!s)
 		return (NULL);
-	}
-	i = 0;
-	j = 0;
-	while (s[i])
+	substr_length = ft_strlen(s) - start;
+	if (ft_strlen(s) > start)
 	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
-		i++;
+		if (substr_length < len)
+			len = substr_length;
+		substr = (char *) ft_calloc(len + 1, sizeof(char));
+		if (!substr)
+			return (NULL);
+		ft_strlcpy(substr, &s[start], len + 1);
 	}
-	str[j] = 0;
-	return (str);
+	else
+		substr = (char *) ft_calloc(1, sizeof(char));
+	return (substr);
 }
