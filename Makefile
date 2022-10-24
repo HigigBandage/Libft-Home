@@ -6,71 +6,80 @@
 #    By: dfinn <dfinn@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/21 13:43:33 by dfinn             #+#    #+#              #
-#    Updated: 2022/10/24 15:40:16 by dfinn            ###   ########.fr        #
+#    Updated: 2022/10/24 20:09:47 by dfinn            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_memset.c		\
-		ft_bzero.c		\
-		ft_memcpy.c		\
-		ft_memmove.c 	\
-		ft_memchr.c		\
-		ft_memcmp.c		\
-		ft_strlen.c		\
-		ft_isalpha.c 	\
-		ft_itoa.c       \
-		ft_isdigit.c		\
-		ft_isalnum.c		\
-		ft_isascii.c		\
-		ft_isprint.c		\
-		ft_toupper.c		\
-		ft_tolower.c		\
-		ft_strchr.c		\
-		ft_strrchr.c		\
-		ft_strncmp.c		\
-		ft_strlcpy.c		\
-		ft_strlcat.c		\
-		ft_strnstr.c		\
-		ft_atoi.c		\
-		ft_calloc.c		\
-		ft_strdup.c		\
-		ft_striteri.c	\
-		ft_substr.c		\
-		ft_strjoin.c 	\
-		ft_strtrim.c		\
-		ft_split.c		\
-		ft_strmapi.c		\
-		ft_putchar_fd.c	\
-		ft_putstr_fd.c	\
-		ft_putendl_fd.c	\
-		ft_putnbr_fd.c
-
 NAME = libft.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+SRCS =	ft_atoi.c\
+			ft_bzero.c\
+			ft_calloc.c\
+			ft_isalnum.c\
+			ft_isalpha.c\
+			ft_isascii.c\
+			ft_isdigit.c\
+			ft_toupper.c\
+			ft_tolower.c\
+			ft_isprint.c\
+			ft_memchr.c\
+			ft_memcmp.c\
+			ft_memcpy.c\
+			ft_memmove.c\
+			ft_memset.c\
+			ft_strchr.c\
+			ft_strdup.c\
+			ft_strncmp.c\
+			ft_strnstr.c\
+			ft_strrchr.c\
+			ft_strlen.c\
+			ft_strlcpy.c\
+			ft_strlcat.c\
+			ft_substr.c\
+			ft_split.c\
+			ft_strjoin.c\
+			ft_strtrim.c\
+			ft_itoa.c\
+			ft_strmapi.c\
+			ft_striteri.c\
+			ft_putchar_fd.c\
+			ft_putstr_fd.c\
+			ft_putendl_fd.c\
+			ft_putnbr_fd.c
+					
+OBJS 	= ${SRCS:.c=.o}
 
-OBJS_DIR = objs/
-OBJS = $(SRCS:.c=.o)
-OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
+BONUS	= ft_lstnew.c\
+		  ft_lstadd_front.c\
+		  ft_lstsize.c\
+		  ft_lstlast.c\
+		  ft_lstadd_back.c\
+		  ft_lstdelone.c\
+		  ft_lstclear.c\
+		  ft_lstiter.c\
+		  ft_lstmap.c
+		  
 
-CC = clang
+BONUSOBJT = ${BONUS:.c=.o}
+LIBR 	= ranlib
+LIBC 	= ar rc
+REMOVE	= rm -f
 
-CC_FLAGS = -Wall -Wextra -Werror
+$(NAME): ${OBJS}
+		 ${LIBC} $(NAME) ${OBJS}
 
-$(OBJS_DIR)%.o : %.c libft.h
-	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling: $<"
-	@clang $(CC_FLAGS) -c $< -o $@
+bonus: ${BONUSOBJT}
+	   ${LIBC} $(NAME) ${BONUSOBJT}
 
-$(NAME): $(OBJECTS_PREFIXED)
-	@ar r $(NAME) $(OBJECTS_PREFIXED)
-	@echo "Libft Done !"
+all:$(NAME)
 
-all: $(NAME)
+clean :
+		${REMOVE} ${OBJS} ${BONUSOBJT}
 
-clean:
-	rm -rf $(OBJS_DIR)
+fclean :clean
+		${REMOVE} $(NAME)
 
-fclean: clean
-	rm -f $(NAME)
+re:fclean all
 
-re: fclean all
-
+.PHONY: all clean fclean re
