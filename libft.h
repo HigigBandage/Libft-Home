@@ -6,7 +6,7 @@
 /*   By: dfinn <dfinn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 13:33:07 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/24 19:58:17 by dfinn            ###   ########.fr       */
+/*   Updated: 2022/10/27 09:36:03 by dfinn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct s_list
 {
-	void	*content;
-	struct s_list *next;
+	void			*content;
+	struct s_list	*next;
 }			t_list;
 
 int		ft_atoi(const char *str);
